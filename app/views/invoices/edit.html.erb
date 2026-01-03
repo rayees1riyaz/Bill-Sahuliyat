@@ -1,0 +1,21 @@
+<div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between mb-10">
+    <div class="flex items-center space-x-6">
+      <%= link_to invoice_path(@invoice), class: "p-3 rounded-2xl bg-white shadow-sm text-gray-400 hover:text-brand-600 transition border border-transparent hover:border-brand-100" do %>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      <% end %>
+      <div>
+        <h1 class="text-3xl font-black text-gray-900 tracking-tight italic uppercase">Edit Bill</h1>
+        <p class="text-[10px] font-black text-brand-600 uppercase tracking-[0.2em] mt-1">Invoice #<%= @invoice.invoice_number %></p>
+      </div>
+    </div>
+    
+    <div class="hidden md:block">
+      <span class="inline-flex items-center px-4 py-2 rounded-xl text-xs font-black bg-brand-50 text-brand-700 uppercase tracking-widest border border-brand-100 italic">
+        Editing Record
+      </span>
+    </div>
+  </div>
+
+  <%= render "form", invoice: @invoice %>
+</div>

@@ -1,0 +1,10 @@
+<div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center space-x-4 mb-10">
+    <%= link_to invoices_path, class: "p-2 rounded-full hover:bg-white transition shadow-sm text-gray-400 hover:text-brand-600" do %>
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+    <% end %>
+    <h1 class="text-3xl font-black text-gray-900 tracking-tight italic">Create New Billing Invoice</h1>
+  </div>
+
+  <%= render "form", invoice: @invoice %>
+</div>

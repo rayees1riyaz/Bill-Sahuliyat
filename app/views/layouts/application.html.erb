@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-50">
+  <head>
+    <title>Bill Sahuliyat | Professional GST Billing</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Google Fonts: Inter %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <%# Tailwind CSS via CDN %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              brand: {
+                50: '#f0f4ff',
+                100: '#d9e2ff',
+                200: '#b3c5ff',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+              }
+            },
+            borderRadius: {
+              '3xl': '1.5rem',
+              '4xl': '2rem',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+      .nav-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); }
+      turbo-frame[busy] #search-spinner { opacity: 1; }
+      turbo-frame[busy] #frame-loader { opacity: 1; pointer-events: auto; }
+      turbo-frame:not([busy]) #search-spinner { opacity: 0; pointer-events: none; }
+      turbo-frame:not([busy]) #frame-loader { opacity: 0; pointer-events: none; }
+    </style>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "print", media: "print" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="h-full flex flex-col">
+    <header class="no-print sticky top-0 z-50">
+      <nav class="nav-gradient shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-20 items-center">
+            <%# Logo %>
+            <div class="flex items-center space-x-3">
+              <div class="bg-white p-2 rounded-2xl shadow-inner transform rotate-3">
+                <svg class="w-8 h-8 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-white text-xl font-black tracking-tight leading-none uppercase">Bill Sahuliyat</span>
+                <span class="text-[9px] text-brand-200 uppercase tracking-widest font-black mt-1 italic">Enterprise Edition</span>
+              </div>
+            </div>
+            
+            <%# Desktop Nav %>
+            <div class="hidden md:flex items-center space-x-8">
+              <%= link_to "Dashboard", invoices_path, class: "text-brand-50 hover:text-white font-bold text-sm tracking-wide transition-all duration-200" %>
+            </div>
+
+            <%# Mobile Controls %>
+            <div class="md:hidden flex items-center space-x-3">
+              <%= link_to new_invoice_path, class: "bg-white text-brand-700 p-3 rounded-2xl shadow-lg border-2 border-brand-100" do %>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+              <% end %>
+              <button class="p-3 text-white bg-white/10 rounded-2xl border border-white/20 backdrop-blur-sm">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="fixed top-24 right-4 z-[60] w-full max-w-sm pointer-events-none space-y-3" id="flash-container">
+      <%= render "shared/flash" %>
+    </div>
+
+    <main class="flex-grow">
+      <%= yield %>
+    </main>
+
+    <footer class="no-print bg-white border-t border-gray-100 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-center md:text-left">
+          <div>
+            <p class="text-gray-900 font-black uppercase text-sm tracking-widest tracking-widest">Saadat Enterprises</p>
+            <p class="text-gray-400 text-xs mt-1 font-medium">Professional Managed Billing & GST Compliance</p>
+          </div>
+          <div class="text-gray-500 text-xs font-bold uppercase tracking-widest">
+            &copy; <%= Time.now.year %> All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

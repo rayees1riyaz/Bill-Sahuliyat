@@ -1,0 +1,22 @@
+<% flash.each do |type, message| %>
+  <%# Determine colors based on flash type %>
+  <% bg_class = type == 'notice' ? 'bg-green-50 border-green-500 text-green-800' : 'bg-red-50 border-red-500 text-red-800' %>
+  <% icon_class = type == 'notice' ? 'text-green-600' : 'text-red-600' %>
+  
+  <div class="<%= bg_class %> border-l-4 p-4 rounded-r-2xl shadow-2xl flex items-center justify-between pointer-events-auto transition-all duration-300 transform" 
+       data-controller="flash">
+    <div class="flex items-center">
+      <div class="p-2 <%= icon_class %> bg-white/50 rounded-lg mr-3">
+        <% if type == 'notice' %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+        <% else %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <% end %>
+      </div>
+      <p class="font-bold text-sm"><%= message %></p>
+    </div>
+    <button data-action="click->flash#dismiss" class="ml-4 p-1 hover:bg-black/5 rounded-lg transition" aria-label="Close notification">
+      <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+  </div>
+<% end %>
