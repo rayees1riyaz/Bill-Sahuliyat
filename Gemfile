@@ -49,9 +49,6 @@ gem "rqrcode"
 
 # PDF generation
 gem "grover"
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
 
 # --------------------
 # Development & Test
