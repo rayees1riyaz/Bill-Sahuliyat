@@ -9,7 +9,7 @@ test:
   adapter: test
 
 production:
-  adapter: null
+  adapter: async
   connects_to:
     database:
       writing: cable
