@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :invoices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   root "invoices#index"
 

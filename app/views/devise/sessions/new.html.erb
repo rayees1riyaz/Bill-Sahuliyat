@@ -1,0 +1,62 @@
+<div class="min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8 bg-gray-50">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md animate-pop-in">
+    <%# App Logo/Icon %>
+    <div class="flex justify-center mb-6">
+      <div class="bg-brand-600 p-4 rounded-3xl shadow-2xl shadow-brand-200 transform rotate-6">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+        </svg>
+      </div>
+    </div>
+    <h2 class="text-center text-3xl font-black text-gray-900 tracking-tight uppercase italic">Welcome Back</h2>
+    <p class="mt-2 text-center text-sm text-gray-500 font-medium">
+      Sign in to manage your professional invoices
+    </p>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md animate-pop-in" style="animation-delay: 0.1s">
+    <div class="bg-white py-10 px-8 shadow-2xl rounded-[2.5rem] border border-gray-100 relative overflow-hidden">
+      <%# Decorative element %>
+      <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-50 rounded-full blur-3xl opacity-50"></div>
+      
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+        <div>
+          <%= f.label :email, class: "block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+              class: "block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition text-sm font-bold shadow-inner",
+              placeholder: "bill@sahuliyat.com" %>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2 ml-1">
+            <%= f.label :password, class: "block text-[10px] font-black text-gray-400 uppercase tracking-widest" %>
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "Forgot?", new_password_path(resource_name), class: "text-[10px] font-black text-brand-600 uppercase tracking-widest hover:text-brand-700 transition" %>
+            <% end %>
+          </div>
+          <%= f.password_field :password, autocomplete: "current-password",
+              class: "block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition text-sm font-bold shadow-inner",
+              placeholder: "••••••••" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center ml-1">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-brand-600 focus:ring-brand-500 border-gray-300 rounded-lg cursor-pointer transition" %>
+            <%= f.label :remember_me, class: "ml-3 block text-xs font-bold text-gray-500 cursor-pointer" %>
+          </div>
+        <% end %>
+
+        <div>
+          <%= f.submit "Sign In", class: "w-full flex justify-center py-4 px-6 border border-transparent rounded-2xl shadow-xl text-sm font-black text-white bg-brand-600 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all transform active:scale-95 uppercase tracking-widest" %>
+        </div>
+      <% end %>
+
+      <div class="mt-8 pt-8 border-t border-gray-50 text-center">
+        <p class="text-xs font-bold text-gray-400">
+          Don't have an account? 
+          <%= link_to "Sign up free", new_registration_path(resource_name), class: "text-brand-600 hover:text-brand-700 transition" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

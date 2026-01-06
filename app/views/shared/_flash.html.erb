@@ -1,22 +1,33 @@
 <% flash.each do |type, message| %>
   <%# Determine colors based on flash type %>
-  <% bg_class = type == 'notice' ? 'bg-green-50 border-green-500 text-green-800' : 'bg-red-50 border-red-500 text-red-800' %>
-  <% icon_class = type == 'notice' ? 'text-green-600' : 'text-red-600' %>
+  <% if type == 'notice' %>
+    <% bg_class = 'bg-white border-green-500 text-green-900 shadow-green-100' %>
+    <% icon_bg = 'bg-green-100 text-green-600' %>
+  <% elsif type == 'alert' || type == 'error' %>
+    <% bg_class = 'bg-white border-red-500 text-red-900 shadow-red-100' %>
+    <% icon_bg = 'bg-red-100 text-red-600' %>
+  <% else %>
+    <% bg_class = 'bg-white border-blue-500 text-blue-900 shadow-blue-100' %>
+    <% icon_bg = 'bg-blue-100 text-blue-600' %>
+  <% end %>
   
-  <div class="<%= bg_class %> border-l-4 p-4 rounded-r-2xl shadow-2xl flex items-center justify-between pointer-events-auto transition-all duration-300 transform" 
+  <div class="<%= bg_class %> border-l-8 p-5 rounded-2xl shadow-2xl flex items-center justify-between pointer-events-auto animate-pop-in" 
        data-controller="flash">
     <div class="flex items-center">
-      <div class="p-2 <%= icon_class %> bg-white/50 rounded-lg mr-3">
+      <div class="p-3 <%= icon_bg %> rounded-2xl mr-4 shadow-sm">
         <% if type == 'notice' %>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
         <% else %>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <% end %>
       </div>
-      <p class="font-bold text-sm"><%= message %></p>
+      <div>
+        <p class="font-black uppercase tracking-widest text-[10px] opacity-40 mb-0.5"><%= type == 'notice' ? 'Success' : 'Attention' %></p>
+        <p class="font-bold text-sm leading-tight"><%= message %></p>
+      </div>
     </div>
-    <button data-action="click->flash#dismiss" class="ml-4 p-1 hover:bg-black/5 rounded-lg transition" aria-label="Close notification">
-      <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <button data-action="click->flash#dismiss" class="ml-6 p-2 hover:bg-gray-100 rounded-xl transition active:scale-90" aria-label="Close notification">
+      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
     </button>
   </div>
 <% end %>

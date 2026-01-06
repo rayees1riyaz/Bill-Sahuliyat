@@ -1,0 +1,60 @@
+<div class="min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8 bg-gray-50">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md animate-pop-in">
+    <div class="flex justify-center mb-6">
+      <div class="bg-brand-600 p-4 rounded-3xl shadow-2xl shadow-brand-200 transform -rotate-6">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+        </svg>
+      </div>
+    </div>
+    <h2 class="text-center text-3xl font-black text-gray-900 tracking-tight uppercase italic">Join Us</h2>
+    <p class="mt-2 text-center text-sm text-gray-500 font-medium">
+      Start creating professional bills in seconds
+    </p>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md animate-pop-in" style="animation-delay: 0.1s">
+    <div class="bg-white py-10 px-8 shadow-2xl rounded-[2.5rem] border border-gray-100 relative overflow-hidden">
+      <div class="absolute -left-10 -top-10 w-32 h-32 bg-brand-50 rounded-full blur-3xl opacity-50"></div>
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-5" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div>
+          <%= f.label :email, class: "block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+              class: "block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition text-sm font-bold shadow-inner",
+              placeholder: "your@email.com" %>
+        </div>
+
+        <div>
+          <%= f.label :password, class: "block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1" %>
+          <% if @minimum_password_length %>
+            <em class="text-[9px] text-gray-400 font-bold ml-1 mb-2 block uppercase">(Min <%= @minimum_password_length %> characters)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password",
+              class: "block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition text-sm font-bold shadow-inner",
+              placeholder: "••••••••" %>
+        </div>
+
+        <div>
+          <%= f.label :password_confirmation, class: "block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",
+              class: "block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition text-sm font-bold shadow-inner",
+              placeholder: "••••••••" %>
+        </div>
+
+        <div class="pt-2">
+          <%= f.submit "Create Account", class: "w-full flex justify-center py-4 px-6 border border-transparent rounded-2xl shadow-xl text-sm font-black text-white bg-brand-600 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all transform active:scale-95 uppercase tracking-widest" %>
+        </div>
+      <% end %>
+
+      <div class="mt-8 pt-8 border-t border-gray-50 text-center">
+        <p class="text-xs font-bold text-gray-400">
+          Already have an account? 
+          <%= link_to "Sign in here", new_session_path(resource_name), class: "text-brand-600 hover:text-brand-700 transition" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

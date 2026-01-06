@@ -1,6 +1,9 @@
 class InvoicesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+
   def index
-    @invoices = Invoice.all
+    @invoices = current_user.invoices
 
     # Filter by name or invoice number
     if params[:query].present?
@@ -11,16 +14,15 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
   end
 
   def new
-    @invoice = Invoice.new
+    @invoice = current_user.invoices.build
     @invoice.line_items.build
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = current_user.invoices.build(invoice_params)
     if @invoice.save
       InvoiceMailer.send_invoice(@invoice).deliver_later if @invoice.customer_email.present?
       redirect_to @invoice, notice: "Invoice was successfully created."
@@ -30,11 +32,9 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    @invoice = Invoice.find(params[:id])
   end
 
   def update
-    @invoice = Invoice.find(params[:id])
     if @invoice.update(invoice_params)
       redirect_to @invoice, notice: "Invoice was successfully updated."
     else
@@ -43,7 +43,6 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
-    @invoice = Invoice.find(params[:id])
     invoice_display_name = "##{@invoice.invoice_number} (#{@invoice.customer_name})"
     @invoice.destroy
     
@@ -54,6 +53,10 @@ class InvoicesController < ApplicationController
   end
 
   private
+
+  def set_invoice
+    @invoice = current_user.invoices.find(params[:id])
+  end
 
   def invoice_params
     params.require(:invoice).permit(
