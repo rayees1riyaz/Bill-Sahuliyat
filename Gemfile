@@ -21,9 +21,9 @@ gem "jbuilder"
 # SQLite only for development & test
 gem "sqlite3", group: [:development, :test]
 
-# PostgreSQL only for production (Render)
-group :production do
-  gem "pg"
+# MySQL only for production (and development based on database.yml)
+group :production, :development do
+  gem "mysql2", "~> 0.5"
 end
 
 # Timezone data for Windows

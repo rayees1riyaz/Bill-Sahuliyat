@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2026_01_02_103747) do
-  create_table "invoices", force: :cascade do |t|
+  create_table "invoices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "cgst_total", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.text "customer_address"
@@ -28,14 +28,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_02_103747) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "line_items", force: :cascade do |t|
+  create_table "line_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "amount", precision: 15, scale: 2, default: "0.0"
     t.decimal "cgst_amount", precision: 15, scale: 2, default: "0.0"
     t.decimal "cgst_rate", precision: 5, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.text "description"
     t.string "hsn_code"
-    t.integer "invoice_id", null: false
+    t.bigint "invoice_id", null: false
     t.integer "quantity"
     t.decimal "rate", precision: 15, scale: 2, default: "0.0"
     t.string "serial_number"
