@@ -1,56 +1,53 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # Code is not reloaded between requests.
+  # Reloading & eager load
   config.enable_reloading = false
-
-  # Eager load code on boot.
   config.eager_load = true
 
-  # Disable full error reports.
+  # Errors
   config.consider_all_requests_local = false
 
-  # Enable caching
+  # Caching (SAFE – no DB)
   config.action_controller.perform_caching = true
+  config.cache_store = :memory_store
 
-  # Cache static assets
+  # Static files cache
   config.public_file_server.headers = {
     "cache-control" => "public, max-age=#{1.year.to_i}"
   }
 
-  # Active Storage (local is fine on Render free)
+  # Active Storage (local is OK on free tier)
   config.active_storage.service = :local
+
+  # Background jobs (NO DB REQUIRED)
+  config.active_job.queue_adapter = :async
 
   # Logging
   config.log_tags = [:request_id]
-  config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
+  config.logger = ActiveSupport::TaggedLogging.logger(STDOUT)
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
-  # Silence healthcheck logs
+  # Silence health check logs
   config.silence_healthcheck_path = "/up"
 
-  # Disable deprecation logs
+  # Disable deprecations
   config.active_support.report_deprecations = false
 
-  # ✅ SAFE CACHE FOR RENDER FREE
-  config.cache_store = :memory_store
-
-  # ✅ SAFE BACKGROUND JOBS (NO DB REQUIRED)
-  config.active_job.queue_adapter = :async
-
-  # Mailer settings (no email errors in prod)
+  # Mailer
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = {
     host: ENV.fetch("APP_HOST", "bill-sahuliyat-yvti.onrender.com")
   }
 
-  # I18n fallback
+  # I18n
   config.i18n.fallbacks = true
 
-  # Do not dump schema after migrations
+  # DB
   config.active_record.dump_schema_after_migration = false
-
-  # Short inspect output
   config.active_record.attributes_for_inspect = [:id]
+
+  # Security (recommended)
+  config.force_ssl = true
 end
