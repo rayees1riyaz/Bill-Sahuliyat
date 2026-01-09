@@ -12,8 +12,7 @@ require "action_mailer/railtie"
 require "active_storage/engine"
 require "action_mailbox/engine"
 require "action_text/engine"
-
-# ❌ DO NOT require action_cable/engine
+require "action_cable/engine"  
 
 Bundler.require(*Rails.groups)
 
@@ -21,12 +20,8 @@ module BillSahuliyat
   class Application < Rails::Application
     config.load_defaults 8.1
 
-    # ✅ Safe for simple billing / CRUD apps
     config.active_job.queue_adapter = :async
     config.cache_store = :memory_store
-
-    # ❌ REMOVE this line completely
-    # config.action_cable.mount_path = nil
 
     config.autoload_lib(ignore: %w[assets tasks])
   end
