@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+# Ruby version (IMPORTANT for Heroku)
+ruby "3.3.10"
+
 # Rails
 gem "rails", "~> 8.1.1"
 
@@ -18,14 +21,23 @@ gem "devise"
 # APIs
 gem "jbuilder"
 
+# --------------------
 # Database
-# SQLite only for development & test
-gem "sqlite3", group: [:development, :test]
+# --------------------
 
-# MySQL only for production (and development based on database.yml)
-group :production, :development do
-  gem "mysql2", "~> 0.5"
+# SQLite for development & test
+group :development, :test do
+  gem "sqlite3"
 end
+
+# PostgreSQL for production (Heroku)
+group :production do
+  gem "pg"
+end
+
+# --------------------
+# Other gems
+# --------------------
 
 # Timezone data for Windows
 gem "tzinfo-data", platforms: %i[windows jruby]
