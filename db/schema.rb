@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2026_01_06_092052) do
-  create_table "invoices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "invoices", force: :cascade do |t|
     t.decimal "cgst_total", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.text "customer_address"
@@ -30,7 +30,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_06_092052) do
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
-  create_table "line_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "line_items", force: :cascade do |t|
     t.decimal "amount", precision: 15, scale: 2, default: "0.0"
     t.decimal "cgst_amount", precision: 15, scale: 2, default: "0.0"
     t.decimal "cgst_rate", precision: 5, scale: 2, default: "0.0"
@@ -47,7 +47,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_06_092052) do
     t.index ["invoice_id"], name: "index_line_items_on_invoice_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
