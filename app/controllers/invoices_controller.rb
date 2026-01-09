@@ -61,7 +61,7 @@ class InvoicesController < ApplicationController
   def invoice_params
     params.require(:invoice).permit(
       :customer_name, :customer_address, :customer_gstin, :customer_phone, :customer_email, :invoice_date, :financed_by,
-      line_items_attributes: [:id, :description, :hsn_code, :quantity, :rate, :cgst_rate, :sgst_rate, :serial_number, :_destroy]
+      line_items_attributes: [:id, :description, :hsn_code, :quantity, :rate, :unit_price, :cgst_rate, :sgst_rate, :serial_number, :_destroy]
     )
   end
 end

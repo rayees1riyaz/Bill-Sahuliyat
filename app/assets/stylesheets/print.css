@@ -212,31 +212,7 @@
     page-break-inside: avoid;
 }
 
-.bank-details p {
-    margin: 0;
-    font-size: 0.75rem;
-}
 
-.bank-details-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    border: 1px solid #2d3748;
-    margin-top: 0.5rem;
-}
-
-.bank-column {
-    padding: 0.5rem;
-}
-
-.bank-column:first-child {
-    border-right: 1px solid #2d3748;
-}
-
-.bank-column p {
-    margin: 0;
-    font-size: 0.75rem;
-    line-height: 1.4;
-}
 
 
 .qr-code-section {

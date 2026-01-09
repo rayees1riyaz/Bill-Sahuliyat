@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_06_092052) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_09_150405) do
   create_table "invoices", force: :cascade do |t|
     t.decimal "cgst_total", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_06_092052) do
     t.string "serial_number"
     t.decimal "sgst_amount", precision: 15, scale: 2, default: "0.0"
     t.decimal "sgst_rate", precision: 5, scale: 2, default: "0.0"
+    t.decimal "unit_price", precision: 15, scale: 2, default: "0.0"
     t.datetime "updated_at", null: false
     t.index ["invoice_id"], name: "index_line_items_on_invoice_id"
   end

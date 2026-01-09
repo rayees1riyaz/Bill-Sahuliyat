@@ -23,7 +23,8 @@ class Invoice < ApplicationRecord
     return if invoice_number.present?
 
     last_invoice = Invoice.order(:id).last
-    new_number = last_invoice ? last_invoice.invoice_number.to_i + 1 : 1
+    base_number = last_invoice ? last_invoice.invoice_number.to_i : 500
+    new_number = [base_number + 1, 501].max
     self.invoice_number = new_number.to_s
   end
 end

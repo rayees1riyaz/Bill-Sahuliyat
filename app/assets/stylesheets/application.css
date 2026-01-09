@@ -8,3 +8,66 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/* Bank Details Styling - Matching Reference Image */
+.bank-details-title {
+    text-align: center;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.bank-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #000;
+    margin-top: 0.25rem;
+    background-color: transparent;
+}
+
+.bank-column {
+    padding: 0.5rem 1rem;
+}
+
+.bank-column:first-child {
+    border-right: 1px solid #000;
+}
+
+.bank-column p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #000;
+}
+
+.bank-column strong {
+    font-weight: 700;
+}
+
+/* Footer & Signature Styling */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+}
+
+.signature-section {
+    text-align: center;
+}
+
+.signature-line {
+    border-top: 1px solid #000;
+    padding-top: 0.4rem;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #000;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.signature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
