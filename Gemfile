@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-# Ruby version (IMPORTANT for Heroku)
 ruby "3.3.10"
 
 # Rails
@@ -16,6 +15,8 @@ gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+
+# Authentication
 gem "devise"
 
 # APIs
@@ -25,12 +26,10 @@ gem "jbuilder"
 # Database
 # --------------------
 
-# SQLite for development & test
 group :development, :test do
   gem "sqlite3"
 end
 
-# PostgreSQL for production (Heroku)
 group :production do
   gem "pg"
 end
@@ -39,20 +38,15 @@ end
 # Other gems
 # --------------------
 
-# Timezone data for Windows
 gem "tzinfo-data", platforms: %i[windows jruby]
 
-# Solid adapters (Rails 8 defaults)
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+
+# gem "solid_cache"
+# gem "solid_queue"
+# gem "solid_cable"
 
 # Faster boot time
 gem "bootsnap", require: false
-
-# Deployment tools (optional)
-gem "kamal", require: false
-gem "thruster", require: false
 
 # Image processing
 gem "image_processing", "~> 1.2"
@@ -74,12 +68,10 @@ group :development, :test do
   gem "letter_opener"
 end
 
-# Development only
 group :development do
   gem "web-console"
 end
 
-# Test only
 group :test do
   gem "capybara"
   gem "selenium-webdriver"

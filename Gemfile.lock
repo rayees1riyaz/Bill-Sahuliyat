@@ -80,9 +80,6 @@ GEM
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt (3.1.21)
-    bcrypt_pbkdf (1.1.2)
-    bcrypt_pbkdf (1.1.2-arm64-darwin)
-    bcrypt_pbkdf (1.1.2-x86_64-darwin)
     bigdecimal (4.0.1)
     bindex (0.8.1)
     bootsnap (1.20.1)
@@ -118,13 +115,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    dotenv (3.2.0)
     drb (2.2.3)
-    ed25519 (1.4.0)
     erb (6.0.1)
     erubi (1.13.1)
-    et-orbi (1.4.0)
-      tzinfo
     ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-aarch64-linux-musl)
     ffi (1.17.3-arm-linux-gnu)
@@ -133,9 +126,6 @@ GEM
     ffi (1.17.3-x86_64-darwin)
     ffi (1.17.3-x86_64-linux-gnu)
     ffi (1.17.3-x86_64-linux-musl)
-    fugit (1.12.1)
-      et-orbi (~> 1.4)
-      raabro (~> 1.4)
     globalid (1.3.0)
       activesupport (>= 6.1)
     grover (1.2.4)
@@ -158,17 +148,6 @@ GEM
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     json (2.18.0)
-    kamal (2.10.1)
-      activesupport (>= 7.0)
-      base64 (~> 0.2)
-      bcrypt_pbkdf (~> 1.0)
-      concurrent-ruby (~> 1.2)
-      dotenv (~> 3.1)
-      ed25519 (~> 1.4)
-      net-ssh (~> 7.3)
-      sshkit (>= 1.23.0, < 2.0)
-      thor (~> 1.3)
-      zeitwerk (>= 2.6.18, < 3.0)
     language_server-protocol (3.17.0.5)
     launchy (3.1.1)
       addressable (~> 2.8)
@@ -202,13 +181,8 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-scp (4.1.0)
-      net-ssh (>= 2.6.5, < 8.0.0)
-    net-sftp (4.0.0)
-      net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.5.1)
       net-protocol
-    net-ssh (7.3.0)
     nio4r (2.7.5)
     nokogiri (1.19.0-aarch64-linux-gnu)
       racc (~> 1.4)
@@ -227,7 +201,6 @@ GEM
     nokogiri (1.19.0-x86_64-linux-musl)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    ostruct (0.6.3)
     parallel (1.27.0)
     parser (3.3.10.0)
       ast (~> 2.4.1)
@@ -253,7 +226,6 @@ GEM
     public_suffix (7.0.0)
     puma (7.1.0)
       nio4r (~> 2.0)
-    raabro (1.4.0)
     racc (1.8.1)
     rack (3.2.4)
     rack-session (2.1.1)
@@ -350,22 +322,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    solid_cable (3.0.12)
-      actioncable (>= 7.2)
-      activejob (>= 7.2)
-      activerecord (>= 7.2)
-      railties (>= 7.2)
-    solid_cache (1.0.10)
-      activejob (>= 7.2)
-      activerecord (>= 7.2)
-      railties (>= 7.2)
-    solid_queue (1.2.4)
-      activejob (>= 7.1)
-      activerecord (>= 7.1)
-      concurrent-ruby (>= 1.3.1)
-      fugit (~> 1.11)
-      railties (>= 7.1)
-      thor (>= 1.3.1)
     sqlite3 (2.9.0-aarch64-linux-gnu)
     sqlite3 (2.9.0-aarch64-linux-musl)
     sqlite3 (2.9.0-arm-linux-gnu)
@@ -374,22 +330,10 @@ GEM
     sqlite3 (2.9.0-x86_64-darwin)
     sqlite3 (2.9.0-x86_64-linux-gnu)
     sqlite3 (2.9.0-x86_64-linux-musl)
-    sshkit (1.25.0)
-      base64
-      logger
-      net-scp (>= 1.1.2)
-      net-sftp (>= 2.1.2)
-      net-ssh (>= 2.8.0)
-      ostruct
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
     thor (1.4.0)
-    thruster (0.1.17)
-    thruster (0.1.17-aarch64-linux)
-    thruster (0.1.17-arm64-darwin)
-    thruster (0.1.17-x86_64-darwin)
-    thruster (0.1.17-x86_64-linux)
     timeout (0.6.0)
     tsort (0.2.0)
     turbo-rails (2.0.20)
@@ -441,7 +385,6 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
-  kamal
   letter_opener
   pg
   propshaft
@@ -450,12 +393,8 @@ DEPENDENCIES
   rqrcode
   rubocop-rails-omakase
   selenium-webdriver
-  solid_cable
-  solid_cache
-  solid_queue
   sqlite3
   stimulus-rails
-  thruster
   turbo-rails
   tzinfo-data
   web-console
