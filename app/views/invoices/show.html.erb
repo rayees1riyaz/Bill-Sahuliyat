@@ -141,10 +141,10 @@
     <div class="invoice-header">
       <div class="brand-section">
         <h1>SAADAT ENTERPRISES</h1>
+        <p class="font-bold">OLD ALI JAN ROAD ZOONIMAR SRINAGAR 190011</p>
         <p class="font-bold">DEALS WITH:</p>
         <p>HOME APPLIANCES, MOBILES, LAPTOPS, SOLAR, SEWING MACHINE, AC</p>
         <p>INVERTERS BATTERIES, LED, SECOND HAND MOBILES, DEEP FREEZERS & PRINTERS ETC.</p>
-        <p>OLD ALI JAN ROAD ZOONIMAR SRINAGAR 190011</p>
         <p>Email: saadatenterprises0@gmail.com</p>
         <p>Phone: 9906776815 / 9906871563</p>
         <p class="mt-2 font-bold text-blue-800">GSTIN: 01BFFPR8956F2Z8</p>
@@ -205,7 +205,7 @@
             <td>
               <%= item.description %>
               <% if item.serial_number.present? %>
-                <div class="text-[10px] text-gray-600 mt-1">S.No: <%= item.serial_number %></div>
+                <div class="text-[10px] text-gray-600 mt-1">S.NO/IMEI: <%= item.serial_number %></div>
               <% end %>
             </td>
             <td><%= item.hsn_code %></td>
