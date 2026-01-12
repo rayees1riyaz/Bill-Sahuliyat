@@ -147,7 +147,7 @@
         <p>INVERTERS BATTERIES, LED, SECOND HAND MOBILES, DEEP FREEZERS & PRINTERS ETC.</p>
         <p>Email: saadatenterprises0@gmail.com</p>
         <p>Phone: 9906776815 / 9906871563</p>
-        <p class="mt-2 font-bold text-blue-800">GSTIN: 01BFFPR8956F2Z8</p>
+        <p class="mt-2 font-bold text-black border-2 border-black inline-block px-2">GSTIN: 01BFFPR8956F2Z8</p>
       </div>
       <div class="invoice-info-section">
         <h2>TAX INVOICE</h2>
@@ -162,21 +162,21 @@
     <div class="details-grid">
       <div class="customer-section">
         <h3>Billed To:</h3>
-        <p class="text-lg font-bold text-blue-900 mb-1"><%= @invoice.customer_name %></p>
+        <p class="text-lg font-bold text-black mb-1"><%= @invoice.customer_name %></p>
         
         <div class="customer-grid">
           <div class="address-info">
-            <p class="whitespace-pre-line text-gray-700 italic"><%= @invoice.customer_address %></p>
+            <p class="whitespace-pre-line text-black italic"><%= @invoice.customer_address %></p>
           </div>
           <div class="contact-info border-l border-gray-200 pl-4">
             <% if @invoice.customer_phone.present? %>
-              <p><span class="font-bold text-gray-500 uppercase text-[9px]">Cell:</span> <span class="font-semibold"><%= @invoice.customer_phone %></span></p>
+              <p><span class="font-bold text-black uppercase text-[9px]">Cell:</span> <span class="font-semibold text-black"><%= @invoice.customer_phone %></span></p>
             <% end %>
             <% if @invoice.customer_email.present? %>
-              <p><span class="font-bold text-gray-500 uppercase text-[9px]">Email:</span> <span class="font-semibold"><%= @invoice.customer_email %></span></p>
+              <p><span class="font-bold text-black uppercase text-[9px]">Email:</span> <span class="font-semibold text-black"><%= @invoice.customer_email %></span></p>
             <% end %>
             <% if @invoice.customer_gstin.present? %>
-              <p class="mt-1 pb-1 border-t border-gray-100 pt-1"><span class="font-bold text-gray-500 uppercase text-[9px]">GSTIN:</span> <span class="font-bold text-blue-800"><%= @invoice.customer_gstin %></span></p>
+              <p class="mt-1 pb-1 border-t border-black pt-1"><span class="font-bold text-gray-900 uppercase text-[9px]">GSTIN:</span> <span class="font-bold text-black"><%= @invoice.customer_gstin %></span></p>
             <% end %>
           </div>
         </div>
@@ -205,7 +205,7 @@
             <td>
               <%= item.description %>
               <% if item.serial_number.present? %>
-                <div class="text-[10px] text-gray-600 mt-1">S.NO/IMEI: <%= item.serial_number %></div>
+                <div class="text-[14px] text-black mt-1">S.NO/IMEI: <%= item.serial_number %></div>
               <% end %>
             </td>
             <td><%= item.hsn_code %></td>
@@ -214,11 +214,11 @@
             <td style="text-align: right;"><%= number_to_currency(item.amount, unit: "", precision: 0) %></td>
             <td style="text-align: center;">
               <%= item.cgst_rate %>%<br>
-              <span class="text-xs text-gray-500"><%= number_to_currency(item.cgst_amount, unit: "", precision: 0) %></span>
+              <span class="text-xs text-black"><%= number_to_currency(item.cgst_amount, unit: "", precision: 0) %></span>
             </td>
             <td style="text-align: center;">
               <%= item.sgst_rate %>%<br>
-              <span class="text-xs text-gray-500"><%= number_to_currency(item.sgst_amount, unit: "", precision: 0) %></span>
+              <span class="text-xs text-black"><%= number_to_currency(item.sgst_amount, unit: "", precision: 0) %></span>
             </td>
             <td style="text-align: right;"><%= number_to_currency(item.amount + item.cgst_amount + item.sgst_amount, unit: "", precision: 0) %></td>
           </tr>
@@ -230,15 +230,15 @@
   <div class="totals-section mt-1">
     <table class="totals-table">
       <tr>
-        <td class="font-bold text-gray-600">Sub Total:</td>
+        <td class="font-bold text-black">Sub Total:</td>
         <td style="text-align: right;"><%= number_to_currency(@invoice.sub_total, unit: "₹", precision: 0) %></td>
       </tr>
       <tr>
-        <td class="font-bold text-gray-600">CGST Total:</td>
+        <td class="font-bold text-black">CGST Total:</td>
         <td style="text-align: right;"><%= number_to_currency(@invoice.cgst_total, unit: "₹", precision: 0) %></td>
       </tr>
       <tr>
-        <td class="font-bold text-gray-600">SGST Total:</td>
+        <td class="font-bold text-black">SGST Total:</td>
         <td style="text-align: right;"><%= number_to_currency(@invoice.sgst_total, unit: "₹", precision: 0) %></td>
       </tr>
       <tr class="grand-total">
@@ -284,7 +284,7 @@
     </div>
   </div>
 
-    <div class="mt-4 text-[10px] text-gray-500 border-t pt-2">
+    <div class="mt-4 text-[10px] text-black border-t border-black pt-2">
       <p>All disputes are subject to Srinagar Jurisdiction only. E.&.O.E</p>
     </div>
 
