@@ -52,7 +52,7 @@
     margin: 1rem auto;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #1a202c;
+    color: #000;
     line-height: 1.1;
     font-size: 11px;
     border-radius: 0.5rem;
@@ -89,7 +89,7 @@
 .brand-section p {
     margin: 0;
     font-size: 0.75rem;
-    color: #4a5568;
+    color: #000;
     line-height: 1.7;
     /* Increase line height for better readability */
 }
@@ -107,8 +107,8 @@
 
 .invoice-info-section p {
     margin: 0;
-    font-size: 0.75rem;
-    color: #4a5568;
+    font-size: 1.2rem;
+    color: #000;
     line-height: 1.4;
 }
 
@@ -130,7 +130,7 @@
     font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: #4a5568;
+    color: #000;
     margin-bottom: 0.25rem;
     letter-spacing: 0.025em;
 }
@@ -192,7 +192,7 @@
 
 .totals-table tr td {
     padding: 0.15rem 0.5rem;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #000;
 }
 
 .totals-table .grand-total {
@@ -205,7 +205,7 @@
 .footer-content {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
