@@ -45,10 +45,11 @@
 .stamp-image {
     width: 150px;
     height: auto;
-    opacity: 0.9;
+    opacity: 1;
     transform: rotate(-5deg);
     mix-blend-mode: multiply;
-    margin-top: 15px;
+    margin-top: 20px;
+    filter: contrast(1.5) brightness(1.1);
 }
 
 /* Screen styles for preview */
