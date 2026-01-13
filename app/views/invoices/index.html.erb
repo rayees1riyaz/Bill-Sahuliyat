@@ -188,5 +188,31 @@
         </div>
       <% end %>
     </div>
+    <% if @invoices.total_pages > 1 %>
+      <div class="px-8 py-6 bg-gray-50 border-t border-gray-100 flex items-center justify-between no-print">
+        <div class="flex-1 flex justify-between sm:hidden">
+          <%= link_to_prev_page @invoices, 'Previous', class: "relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" %>
+          <%= link_to_next_page @invoices, 'Next', class: "ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50" %>
+        </div>
+        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+          <div>
+            <p class="text-sm text-gray-700">
+              Showing
+              <span class="font-bold"><%= @invoices.offset_value + 1 %></span>
+              to
+              <span class="font-bold"><%= [@invoices.offset_value + @invoices.length, @invoices.total_count].min %></span>
+              of
+              <span class="font-bold"><%= @invoices.total_count %></span>
+              results
+            </p>
+          </div>
+          <div>
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+              <%= paginate @invoices, window: 1 %>
+            </nav>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </turbo-frame>
 </div>

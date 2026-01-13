@@ -10,7 +10,7 @@ class InvoicesController < ApplicationController
       @invoices = @invoices.where("customer_name LIKE ? OR invoice_number LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
     end
 
-    @invoices = @invoices.order(created_at: :desc)
+    @invoices = @invoices.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show

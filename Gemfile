@@ -38,6 +38,7 @@ end
 # Other gems
 # --------------------
 
+gem "kaminari"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 
