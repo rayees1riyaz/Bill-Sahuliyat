@@ -14,15 +14,18 @@ class LineItem < ApplicationRecord
   qty = quantity.to_f > 0 ? quantity.to_f : 1
   total_inclusive = unit_price.to_f * qty
 
-  total_gst_rate = cgst_rate.to_f + sgst_rate.to_f
+  # calculate tax
+  cgst = total_inclusive * cgst_rate.to_f / 100.0
+  sgst = total_inclusive * sgst_rate.to_f / 100.0
 
-  base = total_inclusive / (1 + total_gst_rate / 100.0)
-  tax = total_inclusive - base
+  # ✅ round tax to whole numbers (important)
+  self.cgst_amount = cgst.round(0)
+  self.sgst_amount = sgst.round(0)
 
-  self.amount = base.round(2)
-  self.cgst_amount = (tax / 2).round(2)
-  self.sgst_amount = (tax / 2).round(2)
+  # ✅ adjust base so total always matches
+  self.amount = total_inclusive - cgst_amount - sgst_amount
 
+  # per unit rate
   self.rate = (amount / qty).round(2)
 end
 end
