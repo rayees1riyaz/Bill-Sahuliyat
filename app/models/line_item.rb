@@ -9,21 +9,25 @@ class LineItem < ApplicationRecord
   after_initialize :calculate_amounts, if: :new_record?
 
   def calculate_amounts
-    return unless unit_price.present?
-    qty = quantity.to_f > 0 ? quantity.to_f : 1
+  return unless unit_price.present?
 
-    # Math as requested:
-    # 1. Total inclusive price for the line
-    total_inclusive = unit_price.to_f * qty
+  qty = quantity.to_f > 0 ? quantity.to_f : 1
 
-    # 2. Tax is calculated ON the total inclusive price
-    self.cgst_amount = (total_inclusive * (cgst_rate.to_f || 0)) / 100.0
-    self.sgst_amount = (total_inclusive * (sgst_rate.to_f || 0)) / 100.0
-    
-    # 3. Amount (Total Taxable base) = Total Inclusive - Total Taxes
-    self.amount = total_inclusive - cgst_amount - sgst_amount
-    
-    # 4. Rate (Taxable rate per unit) = Amount / Quantity
-    self.rate = amount / qty
-  end
+  total_inclusive = unit_price.to_f * qty
+
+  total_gst_rate = cgst_rate.to_f + sgst_rate.to_f
+
+  # Correct base calculation
+  self.amount = total_inclusive / (1 + total_gst_rate / 100.0)
+
+  # Total tax
+  total_tax = total_inclusive - amount
+
+  # Split tax
+  self.cgst_amount = total_tax / 2
+  self.sgst_amount = total_tax / 2
+
+  # Per unit rate
+  self.rate = amount / qty
+end
 end
