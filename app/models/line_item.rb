@@ -12,22 +12,17 @@ class LineItem < ApplicationRecord
   return unless unit_price.present?
 
   qty = quantity.to_f > 0 ? quantity.to_f : 1
-
   total_inclusive = unit_price.to_f * qty
 
   total_gst_rate = cgst_rate.to_f + sgst_rate.to_f
 
-  # Correct base calculation
-  self.amount = total_inclusive / (1 + total_gst_rate / 100.0)
+  base = total_inclusive / (1 + total_gst_rate / 100.0)
+  tax = total_inclusive - base
 
-  # Total tax
-  total_tax = total_inclusive - amount
+  self.amount = base.round(2)
+  self.cgst_amount = (tax / 2).round(2)
+  self.sgst_amount = (tax / 2).round(2)
 
-  # Split tax
-  self.cgst_amount = total_tax / 2
-  self.sgst_amount = total_tax / 2
-
-  # Per unit rate
-  self.rate = amount / qty
+  self.rate = (amount / qty).round(2)
 end
 end
