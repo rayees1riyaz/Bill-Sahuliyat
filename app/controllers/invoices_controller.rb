@@ -49,10 +49,7 @@ class InvoicesController < ApplicationController
     invoice_display_name = "##{@invoice.invoice_number} (#{@invoice.customer_name})"
     @invoice.destroy
     
-    respond_to do |format|
-      format.html { redirect_to invoices_path, notice: "Invoice #{invoice_display_name} was successfully deleted.", status: :see_other }
-      format.turbo_stream { flash.now[:notice] = "Invoice #{invoice_display_name} was successfully deleted." }
-    end
+    redirect_to invoices_path, notice: "Invoice #{invoice_display_name} was successfully deleted.", status: :see_other
   end
 
   private
