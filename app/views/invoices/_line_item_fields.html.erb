@@ -7,8 +7,16 @@
 
   <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-4 items-start">
     <div class="md:col-span-3">
-      <%= f.label :description, "Product/Service Description", class: "block text-xs font-black text-gray-500 uppercase tracking-widest mb-1.5" %>
+      <%= f.label :description, "Product/Service Description", class: "block text-xs font-black text-gray-500 uppercase tracking-widest mb-1.5 flex items-center" do %>
+        <span class="mr-1 text-red-500">*</span><span class="mr-1">Description</span>
+      <% end %>
       <%= f.text_area :description, rows: 2, placeholder: "Description", class: "block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition font-medium text-sm shadow-sm" %>
+      <% if f.object.errors[:description].any? %>
+        <p class="mt-2 text-[11px] font-bold text-red-500 flex items-center animate-pop-in transition-all duration-300" data-controller="flash">
+          <svg class="w-3.5 h-3.5 mr-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Description <%= f.object.errors[:description].join(", ") %>
+        </p>
+      <% end %>
     </div>
 
     <div class="md:col-span-3">
@@ -22,13 +30,29 @@
     </div>
 
     <div class="md:col-span-2">
-      <%= f.label :quantity, "Qty", class: "block text-xs font-black text-gray-500 uppercase tracking-widest mb-1.5" %>
-      <%= f.number_field :quantity, class: "block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 transition font-black text-sm text-center shadow-sm" %>
+      <%= f.label :quantity, "Qty", class: "block text-xs font-black text-gray-500 uppercase tracking-widest mb-1.5 flex items-center" do %>
+        <span class="mr-1 text-red-500">*</span><span class="mr-1">Qty</span>
+      <% end %>
+      <%= f.number_field :quantity, min: 1, class: "block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 transition font-black text-sm text-center shadow-sm" %>
+      <% if f.object.errors[:quantity].any? %>
+        <p class="mt-2 text-[11px] font-bold text-red-500 flex items-center justify-center animate-pop-in transition-all duration-300" data-controller="flash">
+          <svg class="w-3.5 h-3.5 mr-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <%= f.object.errors[:quantity].join(", ") %>
+        </p>
+      <% end %>
     </div>
 
     <div class="md:col-span-2">
-      <%= f.label :unit_price, "Selling Price (Incl. Tax)", class: "block text-xs font-black text-gray-500 uppercase tracking-widest mb-1.5" %>
-      <%= f.number_field :unit_price, step: 0.01, placeholder: "0.00", class: "block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 transition font-black text-sm text-right shadow-sm" %>
+      <%= f.label :unit_price, "Selling Price (Incl. Tax)", class: "block text-xs font-black text-gray-500 uppercase tracking-widest mb-1.5 flex items-center" do %>
+        <span class="mr-1 text-red-500">*</span><span class="mr-1">Price</span>
+      <% end %>
+      <%= f.number_field :unit_price, step: 0.01, min: 0, placeholder: "0.00", class: "block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 transition font-black text-sm text-right shadow-sm" %>
+      <% if f.object.errors[:unit_price].any? || f.object.errors[:rate].any? %>
+        <p class="mt-2 text-[11px] font-bold text-red-500 flex items-center justify-end animate-pop-in transition-all duration-300" data-controller="flash">
+          <svg class="w-3.5 h-3.5 mr-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <%= f.object.errors[:unit_price].join(", ") %> <%= f.object.errors[:rate].join(", ") %>
+        </p>
+      <% end %>
     </div>
 
     <div class="md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6 pt-4 mt-2 border-t border-gray-100">

@@ -1,14 +1,4 @@
 <%= form_with(model: invoice, class: "space-y-10") do |f| %>
-  <% if invoice.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl shadow-md mb-8">
-      <h2 class="text-red-900 font-bold mb-2"><%= pluralize(invoice.errors.count, "error") %> detected!</h2>
-      <ul class="list-disc list-inside text-red-700 text-sm">
-        <% invoice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%# Client Details Section %>
   <section class="bg-white shadow-2xl rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-gray-100 ring-1 ring-gray-900/5">
@@ -25,15 +15,29 @@
     <div class="p-6 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
       <div class="md:col-span-2">
         <%= f.label :customer_name, "Business/Customer Name", class: "block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 flex items-center" do %>
-          <span class="mr-2">Business/Customer Name</span>
+          <span class="mr-2 text-red-500">*</span><span class="mr-2">Business/Customer Name</span>
           <span class="h-px flex-grow bg-gray-100"></span>
         <% end %>
         <%= f.text_field :customer_name, placeholder: "e.g. John Doe / Global Tech Inc", class: "block w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 focus:bg-white transition duration-300 text-gray-900 font-bold placeholder-gray-300 shadow-sm" %>
+        <% if invoice.errors[:customer_name].any? %>
+          <p class="mt-2.5 text-xs font-bold text-red-500 flex items-center animate-pop-in transition-all duration-300" data-controller="flash">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Customer name <%= invoice.errors[:customer_name].join(", ") %>
+          </p>
+        <% end %>
       </div>
 
       <div>
-        <%= f.label :invoice_date, "Invoice Date", class: "block text-xs font-black text-gray-400 uppercase tracking-widest mb-3" %>
+        <%= f.label :invoice_date, "Invoice Date", class: "block text-xs font-black text-gray-400 uppercase tracking-widest mb-3 flex items-center" do %>
+          <span class="mr-2 text-red-500">*</span><span class="mr-2">Invoice Date</span>
+        <% end %>
         <%= f.date_field :invoice_date, class: "block w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 focus:bg-white transition duration-300 text-gray-900 font-bold shadow-sm" %>
+        <% if invoice.errors[:invoice_date].any? %>
+          <p class="mt-2.5 text-xs font-bold text-red-500 flex items-center animate-pop-in transition-all duration-300" data-controller="flash">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Invoice date <%= invoice.errors[:invoice_date].join(", ") %>
+          </p>
+        <% end %>
       </div>
 
       <div class="md:col-span-3">

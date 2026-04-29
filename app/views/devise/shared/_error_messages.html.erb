@@ -1,20 +1,15 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false" class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-xl animate-pop-in">
-    <div class="flex">
-      <div class="flex-shrink-0">
-        <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      </div>
-      <div class="ml-3">
-        <h3 class="text-sm font-bold text-red-800 uppercase tracking-widest text-[10px] mt-0.5">
-          <%= I18n.t("errors.messages.not_saved",
-                     count: resource.errors.count,
-                     resource: resource.class.model_name.human.downcase)
-           %>
-        </h3>
-        <div class="mt-2 text-sm text-red-700 font-medium">
-          <ul class="list-disc pl-5 space-y-1">
+  <div class="mb-8 w-full" data-controller="flash">
+    <div data-turbo-cache="false" class="w-full bg-white border-l-8 border-red-500 text-red-900 shadow-xl p-5 rounded-2xl overflow-hidden animate-pop-in transition-all duration-300">
+      <div class="flex items-start">
+        <div class="p-3 bg-red-100 text-red-600 rounded-2xl mr-4 shadow-sm flex-shrink-0">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div class="flex-grow pt-1">
+          <p class="font-black uppercase tracking-widest text-[10px] opacity-40 mb-1.5">Action Required</p>
+          <ul class="text-red-700 text-sm font-bold space-y-1.5">
             <% resource.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+              <li class="leading-tight"><%= message %></li>
             <% end %>
           </ul>
         </div>

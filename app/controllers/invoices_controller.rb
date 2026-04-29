@@ -10,6 +10,9 @@ class InvoicesController < ApplicationController
       @invoices = @invoices.where("customer_name LIKE ? OR invoice_number LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
     end
 
+    @total_invoices_count = @invoices.count
+    @total_revenue = @invoices.sum(:grand_total)
+
     @invoices = @invoices.order(created_at: :desc).page(params[:page]).per(10)
   end
 
