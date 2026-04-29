@@ -18,11 +18,10 @@ class InvoiceMailer < ApplicationMailer
   private
 
   def generate_pdf(invoice)
-    # Render the invoice show page to a string
-    # We use a separate controller action or just render the view directly
-    html = ActionController::Base.new.render_to_string(
-      template: 'invoices/show',
-      layout: 'print', # Use a minimal print layout or the default if it works
+    # Use InvoicesController to render the PDF template properly with routing context if needed
+    html = InvoicesController.render(
+      template: 'invoices/pdf',
+      layout: 'pdf',
       assigns: { invoice: invoice }
     )
     
