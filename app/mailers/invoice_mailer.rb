@@ -26,7 +26,7 @@ class InvoiceMailer < ApplicationMailer
     )
     
     # Configure Grover to generate PDF from HTML
-    grover = Grover.new(html, {
+    grover = Grover.new(html,
       format: 'A4',
       margin: {
         top: '0cm',
@@ -37,7 +37,7 @@ class InvoiceMailer < ApplicationMailer
       display_header_footer: false,
       prefer_css_page_size: true,
       print_background: true
-    })
+    )
     
     grover.to_pdf
   end
