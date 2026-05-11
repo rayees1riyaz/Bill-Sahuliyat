@@ -1,0 +1,7 @@
+{
+  "name": "bill-sahuliyat",
+  "private": true,
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}
