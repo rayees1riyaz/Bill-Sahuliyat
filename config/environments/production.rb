@@ -48,15 +48,14 @@ Rails.application.configure do
   }
 
   config.action_mailer.smtp_settings = {
-    address:              "smtp.gmail.com",
-    port:                 587,
-    domain:               "gmail.com",
-    user_name:            ENV["GMAIL_USERNAME"],
-    password:             ENV["GMAIL_PASSWORD"],
-    authentication:       "plain",
-    enable_starttls_auto: true
-  }
-
+  address: "smtp-relay.brevo.com",
+  port: 587,
+  domain: "gmail.com",
+  user_name: ENV["BREVO_USERNAME"],
+  password: ENV["BREVO_SMTP_KEY"],
+  authentication: :plain,
+  enable_starttls_auto: true
+}
   # I18n
   config.i18n.fallbacks = true
 
