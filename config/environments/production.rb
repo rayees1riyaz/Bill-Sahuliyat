@@ -12,7 +12,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.cache_store = :memory_store
 
-  # Static files cache
+  # Static files cache (Serve public files on Render)
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || true
   config.public_file_server.headers = {
     "cache-control" => "public, max-age=#{1.year.to_i}"
   }
@@ -39,8 +40,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   
-  # Set to true to raise errors if email fails, helps with debugging in production initially
-  config.action_mailer.raise_delivery_errors = true 
+  # Prevent SMTP errors from crashing web requests with 500 error in production
+  config.action_mailer.raise_delivery_errors = false 
 
   config.action_mailer.default_url_options = {
     host: ENV.fetch("APP_HOST", "bill-sahuliyat-yvti.onrender.com"),

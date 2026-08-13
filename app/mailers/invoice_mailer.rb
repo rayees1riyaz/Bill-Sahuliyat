@@ -25,7 +25,7 @@ class InvoiceMailer < ApplicationMailer
       assigns: { invoice: invoice }
     )
     
-    # Configure Grover to generate PDF from HTML
+    # Configure Grover to generate PDF from HTML with Linux container flags
     grover = Grover.new(html,
       format: 'A4',
       margin: {
@@ -36,7 +36,8 @@ class InvoiceMailer < ApplicationMailer
       },
       display_header_footer: false,
       prefer_css_page_size: true,
-      print_background: true
+      print_background: true,
+      launch_args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     )
     
     grover.to_pdf
