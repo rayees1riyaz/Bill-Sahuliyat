@@ -65,7 +65,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-full flex flex-col">
+  <body class="h-full flex flex-col" <%= %(data-controller="session-timeout" data-session-timeout-duration-value="#{30.minutes.to_i * 1000}" data-session-timeout-login-url-value="#{new_user_session_path}").html_safe if user_signed_in? %>>
     <header class="no-print sticky top-0 z-50">
       <nav class="nav-gradient shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
